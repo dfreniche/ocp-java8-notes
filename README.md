@@ -4,17 +4,22 @@
 
 These are some notes I've used for some training I've done preparing people to get this certification, also these notes are for myself (learning & getting that certification)
 
+
+## How to read
+
+These docs are in Markdown format, prepared to be used with the superb presentation software [Deckset](http://www.decksetapp.com/)
+
+If you need a PDF version you can use gitprint.com. Just change any link to my MD documents from github to gitprint.
+
 --- 
 
-## Java 8 Cert exam I (Java SE 8 Programmer I)
-### Exam 1Z0-808
+### Java SE 8 Programmer II: 1Z0-809
 
-- Duration:	150 min
-- Number of Questions: 85
-- Passing Score:	65% --> 56 questions OK and done!
+Duration:	150
+Number of Questions:85
+Passing Score:	65%
 
-
-https://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=5001&get_params=p_exam_id:1Z0-809
+https://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=652&get_params=p_exam_id:1Z0-809
 
 - update path (for those with previous certs):
 
@@ -23,6 +28,8 @@ http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getpage?page_id=654&ge
 ---
 
 ## Exam simulator
+
+Disclaimer: I love this simulator and used it to prepare every Java cert exam I've passed. I'm not affiliated to them.
 
 ### Enthuware for OCP ($9.95)
 
