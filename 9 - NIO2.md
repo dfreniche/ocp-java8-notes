@@ -6,10 +6,12 @@ autoscale: true
 
 ---
 
-- introduced in 1.4 as replacement for Streams
-- not used by anyone
+## NIO2: New I/O api, v2
+
+- introduced in Java 1.4 as replacement for Streams
+    - not used by anyone
 - Java 1.7 brings up NIO2
-- still nobody uses it
+    - still nobody uses it
 
 ---
 
@@ -23,6 +25,7 @@ autoscale: true
 Path bin = Paths.get("/bin");
 
 // using varargs so no need to change between / & \
+// the correct system-dependent path.separator gets added
 
 Path bin = Paths.get("/", "bin");
 
@@ -71,7 +74,7 @@ Path bin = FileSystems.getDefault().getPath("/bin");
 
 System.out.println(bin.getFileName());
 
-File f = bin.toFile();
+File f = bin.toFile();  // converts from "new" Path to "old" File
 
 Path newBin = f.toPath();
 
@@ -144,7 +147,7 @@ System.out.println(Files.exists(bin));
 
 ---
 
-## Creating/deleting directories
+## `Files`: Creating directories
 
 ```java
 try {
@@ -159,7 +162,10 @@ try {
 }
 
 ```
-- also:
+
+---
+
+## `Files`: Deleting directories
 
 ```java
 Path hello = Paths.get("hello");
@@ -169,6 +175,7 @@ Files.deleteIfExists(hello);
 
 ---
 
+## Other `Files` methods
 
 - isSameFile
 - copy
@@ -181,12 +188,16 @@ Files.deleteIfExists(hello);
 
 ```java
 try {
-    Files.readAllLines(Paths.get("/Users/dfreniche/.bash_history")).stream().forEach(System.out::println);
+    Files.readAllLines(Paths.get("/Users/dfreniche/.bash_history")).
+        stream().
+        forEach(System.out::println);
 } catch (IOException e) {
     e.printStackTrace();
 }
 
 ```
+
+---
 
 ## Walking a directory
 
@@ -220,7 +231,9 @@ try {
 
 ```java
 try {
-    Files.walk(Paths.get("/usr/local")).filter(f -> Files.isDirectory(f)).forEach(System.out::println);
+    Files.walk(Paths.get("/usr/local")).
+        filter(f -> Files.isDirectory(f)).
+        forEach(System.out::println);
 } catch (IOException e) {
     e.printStackTrace();
 }
@@ -228,7 +241,9 @@ try {
 
 ```java
 try {
-    Files.walk(Paths.get("/usr/local")).filter(f -> Files.isDirectory(f) && f.getParent().toString().equals("/usr/local") ).forEach(System.out::println);
+    Files.walk(Paths.get("/usr/local")).
+        filter(f -> Files.isDirectory(f) && f.getParent().toString().equals("/usr/local") ).
+        forEach(System.out::println);
 } catch (IOException e) {
     e.printStackTrace();
 }

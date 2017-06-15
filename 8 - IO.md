@@ -8,11 +8,11 @@ autoscale: true
 
 ## Review
 
-- File
+- __File__
     - some data
     - can be empty
     - can't contain other files / dirs
-- Directory
+- __Directory__
     - _file_ containing a list of files / dirs
     - can contain other files / dirs
     - can be empty
@@ -53,20 +53,22 @@ autoscale: true
 
 ---
 
-## File System
-- Paths
-    - relative
-        - `mydir`, `./thisDir`, `bin/bash`
-    - absolute: start with the root directory
-        - `c:\\windows`, `/bin`
+## File System: Paths
+
+- __relative__
+
+ `mydir`, `./thisDir`, `bin/bash`
+
+- __absolute__: start with the root directory
+
+ `c:\\windows`, `/bin`
 
 ---
 
-## File
+## File: `java.io.File`
 
-- `java.io.File`
-    - reads information about existing files & directories
-    - needed to create, delete, rename files, check directory contents... 
+- reads information about existing files & directories
+- needed to create, delete, rename files, check directory contents... 
 - needs a Path to be created
 
 ```java
@@ -105,10 +107,10 @@ File f = new File(root, "bin");
 ## System-independent paths
 
 - `File.separator`: character used to separate parts of a relative / absolute path
-    - on UNIX systems, "/", on Windows "\\"
+    - on UNIX systems, __"/"__, on Windows __"\\"__
     - `/bin/ls`, `c:\\windows\\system32`
-- `File.pathSeparator`: character used to separate directories in the `PATH` environment variable
-    - on UNIX systems, ":", on Windows ";"
+- `File.pathSeparator`: character used to separate directories in the `PATH` environment variable 😱
+    - on UNIX systems, __":"__, on Windows __";"__
 
 ```java
 File root = new File(File.separator);
@@ -129,6 +131,10 @@ File f = new File(root, "bin");
 | length                | getParent() |
 | listFiles()
 
+---
+
+## Stream magic
+
 ```java
 Arrays.stream(f.listFiles()).sorted().forEach(System.out::println);
 ```
@@ -140,7 +146,6 @@ Arrays.stream(f.listFiles()).sorted().forEach(System.out::println);
 - `System.in` is a `java.io.BufferedInputStream`
     - raw stream of bytes
 - to read from it, we need an `InputStreamReader`
-- this reads a _stream_ of bytes, one at a time. We need to read complete lines!
 
 ```java
 InputStreamReader in = new InputStreamReader(System.in);
@@ -155,6 +160,7 @@ do {
 
 ## Reading from the keyboard: old way
 
+- this reads a _stream_ of bytes, one at a time. We need to read complete lines!
 - to read complete lines, we use a `BufferedReader`
 
 ```java
@@ -167,9 +173,9 @@ String input = reader.readLine();
 
 ## Reading from the keyboard: "new" way
 
-- since Java 6
+- since Java 6. New way... 🤔
 - `Console` singleton class
-- Console can be null
+- `Console` can be null!
 
 ```java
 Console console = System.console();
@@ -187,9 +193,18 @@ String input =  console.readLine();
 
 - reader() ~= System.in
 
+Retrieves the unique Reader object associated with this console.
+
+```java
+Console con = System.console();
+ if (con != null) {
+     Scanner sc = new Scanner(con.reader());
+     ...
+ }
+```
 ---
 
-## format & printf
+## Console: format & printf
 
 ```java
 console.writer().println("Hello");
@@ -200,6 +215,9 @@ console.printf("This %s", "rules");
 ---
 
 ## flush, readLine, readPassword
+
+- Flushes the console and forces any buffered output to be written immediately .
+
 
 ---
 

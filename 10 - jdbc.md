@@ -109,7 +109,7 @@ try (Connection connection = ds.getConnection();
 
 ---
 
-## Manual loading database Driver
+## Manually loading database Driver
 
 - DriverManager search JARs that contain a `Driver` class
 - looks for `META-INF/services/java.sql.Driver`

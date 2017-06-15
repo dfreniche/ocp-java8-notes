@@ -58,18 +58,24 @@ try {
 }
 
 ```
+
 ---
 
 ## Try-catch gotchas
 
-### Error! Needs a block
+* Error! Needs a block
+
 ```java
 try
 	int i = 0;
 catch (Exception e) ;
 ```
 
-### Error! Try need a catch / finally
+---
+
+## Try-catch gotchas
+
+* Error! Try need a catch / finally
 
 ```java
 try  {
@@ -77,7 +83,7 @@ try  {
 }   // error!
 ```
 
-### This is fine
+* This is fine
 
 ```java
 
